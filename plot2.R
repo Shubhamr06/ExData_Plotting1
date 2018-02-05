@@ -1,0 +1,7 @@
+FullTimeDate <- strptime(paste(df$Date, df$Time, sep=" "), "%d/%m/%Y %H:%M:%S")
+df <- cbind(df, FullTimeDate)
+df$Date <- as.Date(df$Date, format="%d/%m/%Y")
+df$Time <- format(df$Time, format="%H:%M:%S")
+with(df, plot(FullTimeDate, Global_active_power, type="l", xlab="Day", ylab="Global Active Power (kilowatts)"))
+dev.copy(png,"plot2.png",height=480,width=480)
+dev.off()
